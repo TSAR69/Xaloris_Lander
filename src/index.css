@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@900&display=swap');
+@import "tailwindcss";
+
+
+@theme {
+  --font-sans: "Red Hat Display", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+  --font-instrument: "Instrument Serif", serif;
+
+  /* Gold Theme Colors */
+  --color-champagne: #D4AF37;
+  --color-brass: #B08D57;
+  --color-dark: #050505;
+  --color-text: #F5F5F5;
+  --color-text-secondary: #A7A7A7;
+  --color-border-gold: rgba(212,175,55,0.14);
+  --color-glow-gold: rgba(212,175,55,0.18);
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes gold-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+  }
+  @keyframes gold-shine {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes orb-float {
+    0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    25% { transform: translate(-50%, -50%) scale(1.03) rotate(3deg); }
+    50% { transform: translate(-50%, -54%) scale(0.97) rotate(0deg); }
+    75% { transform: translate(-50%, -48%) scale(1.02) rotate(-2deg); }
+  }
+  @keyframes particle-float {
+    0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+    20% { opacity: 0.6; }
+    80% { opacity: 0.6; }
+    100% { transform: translateY(-120px) translateX(30px) scale(0); opacity: 0; }
+  }
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 40px rgba(212,175,55,0.15), 0 0 80px rgba(212,175,55,0.05); }
+    50% { box-shadow: 0 0 60px rgba(212,175,55,0.25), 0 0 120px rgba(212,175,55,0.1); }
+  }
+  @keyframes button-shine {
+    0% { transform: translateX(-100%) rotate(25deg); }
+    100% { transform: translateX(200%) rotate(25deg); }
+  }
+
+  --animate-shimmer: shimmer 3s infinite linear;
+  --animate-gold-shimmer: gold-shimmer 3s infinite linear;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
+  --animate-gold-shine: gold-shine 4s ease infinite;
+  --animate-orb-float: orb-float 8s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 4s ease-in-out infinite;
+}
+
+/* Base resets and custom utilities */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Lenis smooth scroll — required CSS hooks */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Caret blink for the rotating word. */
+@keyframes blink {
+  0%, 49% { opacity: 0.8; }
+  50%, 100% { opacity: 0; }
+}
+
+body {
+  background-color: #050505;
+  color: #F5F5F5;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Gold shimmer text — replaces purple text-shimmer */
+.text-shimmer {
+  background: linear-gradient(
+    to right,
+    #F5F5F5 10%,
+    #D4AF37 35%,
+    #B08D57 55%,
+    #D4AF37 75%,
+    #F5F5F5 90%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: var(--animate-gold-shimmer);
+}
+
+/* Premium gold text shimmer for headings */
+.gold-text-shimmer {
+  background: linear-gradient(
+    to right,
+    #D4AF37 0%,
+    #FFF8DC 30%,
+    #D4AF37 50%,
+    #B08D57 70%,
+    #D4AF37 100%
+  );
+  background-size: 250% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: var(--animate-gold-shimmer);
+}
+
+/* Molten Gold Hero Orb */
+.molten-orb {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%,
+    rgba(255, 215, 0, 0.35) 0%,
+    rgba(212, 175, 55, 0.25) 20%,
+    rgba(176, 141, 87, 0.15) 45%,
+    rgba(212, 175, 55, 0.05) 65%,
+    transparent 85%
+  );
+  filter: blur(60px);
+  pointer-events: none;
+  animation: orb-float 8s ease-in-out infinite, glow-pulse 4s ease-in-out infinite;
+}
+
+/* Secondary orb for depth */
+.molten-orb-secondary {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%,
+    rgba(212, 175, 55, 0.2) 0%,
+    rgba(176, 141, 87, 0.1) 35%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  pointer-events: none;
+  animation: orb-float 10s ease-in-out infinite reverse;
+}
+
+/* Gold particle floating */
+.gold-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #D4AF37 0%, #B08D57 100%);
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.6), 0 0 12px rgba(212, 175, 55, 0.3);
+  pointer-events: none;
+  animation: particle-float 6s ease-in-out infinite;
+}
+
+/* Brushed metal button finish */
+.brushed-metal {
+  background: linear-gradient(
+    135deg,
+    #B08D57 0%,
+    #D4AF37 25%,
+    #C5A028 45%,
+    #D4AF37 55%,
+    #B08D57 75%,
+    #D4AF37 100%
+  );
+  background-size: 300% 300%;
+  position: relative;
+  overflow: hidden;
+}
+
+.brushed-metal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+}
+
+.brushed-metal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 30%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.15) 70%,
+    transparent 100%
+  );
+  transform: translateX(-100%) rotate(25deg);
+  pointer-events: none;
+  transition: transform 0.6s ease;
+}
+
+.brushed-metal:hover::after {
+  transform: translateX(300%) rotate(25deg);
+}
+
+/* Gold glow utility */
+.gold-glow {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15), 0 0 40px rgba(212, 175, 55, 0.05);
+}
+
+/* Custom scrollbars for a premium dark look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.5);
+}
+
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%,
+    rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
