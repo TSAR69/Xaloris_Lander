@@ -76,7 +76,6 @@ export default function Download() {
 
     const tStart = setTimeout(() => {
       if (cancelled) return;
-      setGlitchKey((k) => k + 1);
       cancelScrambleRef.current = scrambleTo(full, (v) => {
         if (!cancelled) setDisplayed(v);
       }, 650);
@@ -144,12 +143,12 @@ className="relative bg-black text-white py-24 overflow-hidden" style={{ backgrou
                 no RGB-split — pure premium gold. */}
             <div
               className="relative inline-block min-h-[44px]"
-              style={{ fontFamily: '"Instrument Serif", "Times New Roman", serif', fontStyle: 'bold', fontWeight: 0 }}
+              style={{ fontFamily: '"Special Elite", monospace', fontWeight: '700' }}
             >
               {/* Main visible layer — gold shimmer */}
               <span
                 className={`relative text-[26px] md:text-[44px] tracking-tight gold-text-shimmer inline-block leading-none`}
-                style={{ fontFamily: '"Instrument Serif", "Times New Roman", serif', fontStyle: '', fontWeight:0}}
+                style={{ fontFamily: '"Special Elite", monospace' }}
               >
                 {displayed}
                 <span

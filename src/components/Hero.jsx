@@ -44,7 +44,7 @@ export default function Hero() {
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none">
 <video
           ref={videoRef}
-          className="w-full h-full object-cover opacity-90" style={{ filter: 'saturate(120%) contrast(110%)' }}
+          className="w-full h-full object-cover opacity-90" style={{ filter: 'sepia(1) saturate(1.8) brightness(0.8) contrast(1.15) hue-rotate(-10deg)' }}
           muted
           autoPlay
           playsInline

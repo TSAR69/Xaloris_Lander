@@ -97,7 +97,7 @@ export default function Pricing() {
             price="$0"
             period="for limited time"
             description="Experience AI-powered OSINT. Access core investigation tools. Perfect for learning and testing. Start uncovering insights today."
-            gradient="linear-gradient(137deg, #000000 0%, #f72525 100%)"
+            gradient="linear-gradient(137deg, #D4AF37 0%, #B08D57 100%)"
             buttonText="Get Started"
             bezel={true}
           />
@@ -123,8 +123,8 @@ export default function Pricing() {
             bezel={true}
             Icon={Monitor}
             delay={0.3}
-            description="Exclusive access. Custom capabilities. Your intelligence platform, your rules. Just made by us.  (For Enterprises and Govermnents only)"
-            gradient="linear-gradient(137deg, #4361EE 0%, #000000 45%, #F72585 100%)"
+            description="Exclusive access. Custom capabilities. Your intelligence platform, your rules. Just made by us.  (For Enterprises and Governments only)"
+            gradient="linear-gradient(137deg, #D4AF37 0%, #B08D57 100%)"
             buttonText="Contact us"
           />
         </div>

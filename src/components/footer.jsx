@@ -68,8 +68,7 @@ className="bg-[#000000] w-full rounded-3xl overflow-hidden p-6 md:p-10 text-whit
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none" style={{ backgroundColor: '#000000', zIndex: 0 }}>
           <video
             ref={videoRef}
-            className="w-full h-full object-cover opacity-90"
-            style={{}}
+            className="w-full h-full object-cover opacity-90" style={{ filter: 'sepia(1) saturate(1.8) brightness(0.8) contrast(1.15) hue-rotate(-10deg)' }}
             muted
             autoPlay
             playsInline
@@ -270,7 +269,7 @@ className="w-full appearance-none rounded-2xl bg-black/50 border border-white/10
 
             {/* Instagram */}
             <a
-              href="#"
+              href="https://www.instagram.com/xaloris.ai"
               className="opacity-70 hover:opacity-100 transition-colors hover:text-white"
               aria-label="Instagram"
             >
